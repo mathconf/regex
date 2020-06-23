@@ -11,9 +11,13 @@
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-attrs@3.0.3/markdown-it-attrs.browser.js"></script>
 </head>
 <body>
-  <div id="app" class="container">
+  <div id="app" class="container-fluid">
     <div class="form-row breadcrumb">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-2 small">
+        <h4>1. definition</h4>
+        Here you define search/replace texts and when are they executed (before or after the parser).
+      </div>
+      <div class="form-group col-md-5">
 
         <label for="prepost" class="m-1">When</label>
         <select v-model="prepost" id="prepost" class="form-control">
@@ -26,7 +30,7 @@
         <input v-model="search" id="search" class="form-control">
 
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-5">
 
         <label for="replace" class="m-1">Replace with</label>
         <textarea v-model="replace" id="replace" class="form-control"></textarea>
@@ -34,7 +38,11 @@
       </div>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-6 alert alert-info">
+      <div class="form-group col-md-2 small">
+        <h4>2. model and result</h4>
+        Here you can put an example and observ the result (the code and the renderd html).
+      </div>
+      <div class="form-group col-md-5 alert alert-info">
 
         <!-- <label for="markup">Parser</label> -->
         <select v-model="markup" id="markup" class="form-control">
@@ -44,7 +52,7 @@
         <textarea v-model="test" class="form-control h-75" placeholder="Model goes here..."></textarea>
 
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-5">
 
         <ul class="nav nav-tabs">
           <li class="nav-item">
@@ -61,12 +69,18 @@
       </div>
     </div>
     <div class="alert alert-danger" role="alert" v-if="error_regex">
-          Erreur compilng search regex !
+          Error compiling search regex !
     </div>
     <div class="form-row breadcrumb">
+      <div class="form-group col-md-4 small">
+        <h4>3. regex rule</h4>
+        Here is the replacement rule encoded as <code>json</code>.<br>
+        You can copy/paste it in the <code>regex.json</code> file of your conference.
+      </div>
 
-      <label for="regex-json">regex.json</label>
-      <textarea v-model="regex_json" id="regex-json" class="form-control col-12"></textarea>
+      <div class="form-group col-md-5 .col-md-offset-1">
+        <label for="regex-json">regex.json</label>
+        <textarea v-model="regex_json" id="regex-json" class="form-control"></textarea>
 
     </div>
 
