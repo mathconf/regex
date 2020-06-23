@@ -36,4 +36,4 @@ In this example if we replace `markdown` by `html` and we parse with `markdown` 
 
 ## The playground
 
-You can test how all this works on [the dedicated playground](playground).
+You can test how all this works on [the dedicated playground](https://mathconf.github.io/regex/playground/).
