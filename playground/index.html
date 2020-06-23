@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="regex.css">
+
+  <!-- parsers -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/textile-js/2.0.5/textile.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/11.0.0/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-attrs@3.0.3/markdown-it-attrs.browser.js"></script>
+</head>
+<body>
+  <div id="app" class="container">
+    <div class="form-row breadcrumb">
+      <div class="form-group col-md-6">
+
+        <label for="prepost" class="m-1">When</label>
+        <select v-model="prepost" id="prepost" class="form-control">
+          <option value="markup">before markup parser (acts on source)</option>
+          <option value="html">after markup parser (acts on html)</option>
+        </select>
+
+
+        <label for="search" class="m-1">Search</label>
+        <input v-model="search" id="search" class="form-control">
+
+      </div>
+      <div class="form-group col-md-6">
+
+        <label for="replace" class="m-1">Replace with</label>
+        <textarea v-model="replace" id="replace" class="form-control"></textarea>
+
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 alert alert-info">
+
+        <!-- <label for="markup">Parser</label> -->
+        <select v-model="markup" id="markup" class="form-control">
+          <option value="markdown">markdown</option>
+          <option value="textile">textile</option>
+        </select>
+        <textarea v-model="test" class="form-control h-75" placeholder="Model goes here..."></textarea>
+
+      </div>
+      <div class="form-group col-md-6">
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" :class="{active: show_code}" href="#" @click.prevent="show_code=true">Code result</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" :class="{active: !show_code}" href="#" @click.prevent="show_code=false">View result</a>
+          </li>
+        </ul>
+        <textarea v-model="result" class="form-control h-75" v-show="show_code"></textarea>
+        <div v-html="result" class="h-75 overflow-auto" v-show="!show_code"></div>
+
+
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" v-if="error_regex">
+          Erreur compilng search regex !
+    </div>
+    <div class="form-row breadcrumb">
+
+      <label for="regex-json">regex.json</label>
+      <textarea v-model="regex_json" id="regex-json" class="form-control col-12"></textarea>
+
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="regex.js"></script>
+</body>
+</html>
